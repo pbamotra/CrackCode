@@ -1,0 +1,52 @@
+package SetMatrixZeroes;
+
+import Tools.ListTools;
+
+/**
+ * User: Ran Chen <ranc@cs.cmu.edu>
+ * Date: 9/10/14
+ * Time: 11:30 PM
+ */
+public class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int[] row = new int[m];
+        int[] column = new int[n];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    row[i] = 1;
+                    column[j] = 1;
+                }
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            if (row[i] == 1) {
+                for (int j = 0; j < n; j++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        for (int j = 0; j < n; j++) {
+            if (column[j] == 1) {
+                for (int i = 0; i < m; i++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+    }
+    public static void main(String[] args){
+        int[][] m = {{0, 2, 3}, {4, 0, 6}, {7, 8, 9}};
+        //int[][] m = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        //int[][] m = {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}};
+        new ListTools().PrintListList(m);
+        new Solution().setZeroes(m);
+        new ListTools().PrintListList(m);
+    }
+}
