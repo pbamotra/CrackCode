@@ -23,4 +23,11 @@ public class ListTools {
         }
         System.out.print("\r\n");
     }
+
+    static public void PrintList(int[] l) {
+        for (Integer i : l) {
+            System.out.print(i + " ");
+        }
+        System.out.print("\r\n");
+    }
 }
