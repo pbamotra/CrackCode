@@ -39,4 +39,14 @@ public class TreeTools {
 
         return n;
     }
+
+    public TreeNode getTree4() {
+        TreeNode n = new TreeNode(1);
+        TreeNode a = new TreeNode(2);
+        TreeNode b = new TreeNode(2);
+
+        n.left = a;
+        a.left = b;
+        return n;
+    }
 }

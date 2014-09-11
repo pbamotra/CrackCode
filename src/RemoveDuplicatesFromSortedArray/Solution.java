@@ -1,5 +1,7 @@
 package RemoveDuplicatesFromSortedArray;
 
+import Tools.ListTools;
+
 /**
  * User: Ran Chen <ranc@cs.cmu.edu>
  * Date: 12/18/13
@@ -14,22 +16,22 @@ public class Solution {
         if (A.length == 0) return 0;
         if (A.length == 1) return 1;
 
-        int len = 1;
-        for (int i = 1; i < A.length; i++) {
-            if (A[i] - A[i - 1] > 0) {
-                len++;
-            }
-        }
-
-        for (int i = 1; i < len; i++) {
-            if (A[i] <= A[i - 1]) {
+        int count = 0;
+        for (int i = 0; i < A.length - 1; i++) {
+            if (A[i] == A[i + 1]) {
+                count++;
+            } else {
+                A[i - count + 1] = A[i + 1];
 
             }
         }
-        return len;
+
+        return A.length - count;
     }
 
     static public void main(String[] args) {
-        System.out.println(new Solution().removeDuplicates(new int[]{1, 2, 2, 2}));
+        int[] A = new int[]{1, 1, 2, 3};
+        System.out.println(new Solution().removeDuplicates(A));
+        new ListTools().PrintList(A);
     }
 }
