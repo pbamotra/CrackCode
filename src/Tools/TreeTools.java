@@ -7,6 +7,8 @@ package Tools;
  */
 public class TreeTools {
     public TreeNode getTree1() {
+        //1
+        //
         TreeNode n = new TreeNode(1);
         TreeNode a = new TreeNode(2);
         TreeNode b = new TreeNode(3);
@@ -26,6 +28,14 @@ public class TreeTools {
         n.left = a;
         n.right = b;
         a.right = c;
+
+        return n;
+    }
+
+    public TreeNode getTree3() {
+        TreeNode n = new TreeNode(1);
+        TreeNode a = new TreeNode(2);
+        n.left = a;
 
         return n;
     }
