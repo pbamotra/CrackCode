@@ -25,7 +25,7 @@ public class TreeTools {
         TreeNode c = new TreeNode(4);
         n.left = a;
         n.right = b;
-        //a.right = c;
+        a.right = c;
 
         return n;
     }
