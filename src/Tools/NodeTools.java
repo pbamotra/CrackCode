@@ -8,7 +8,8 @@ package Tools;
 public class NodeTools {
     static public ListNode CreateNodeList(String s) {
         //s = "1->2->3->4->5"
-
+        if (s.length() == 0) return null;
+        if (s.length() == 1) return new ListNode(Integer.valueOf(s));
         String[] numbers = s.split("->");
         ListNode listNode = new ListNode(Integer.valueOf(numbers[0]));
         ListNode last = listNode;
