@@ -6,7 +6,22 @@ package Tools;
  * Time: 9:11 AM
  */
 public class TreeTools {
-    public TreeNode getTree1() {
+
+    static public void PrintTree(TreeNode n) {
+        visit(n);
+        System.out.println();
+    }
+
+    static void visit(TreeNode n) {
+        if (n == null) {
+            System.out.print("# ");
+            return;
+        } else System.out.print(n.val + " ");
+        if (n.left != null) visit(n.left);
+        if (n.right != null) visit(n.right);
+    }
+
+    static public TreeNode getTree1() {
         //1
         //
         TreeNode n = new TreeNode(1);
@@ -20,7 +35,7 @@ public class TreeTools {
         return n;
     }
 
-    public TreeNode getTree2() {
+    static public TreeNode getTree2() {
         TreeNode n = new TreeNode(1);
         TreeNode a = new TreeNode(2);
         TreeNode b = new TreeNode(3);
@@ -32,7 +47,7 @@ public class TreeTools {
         return n;
     }
 
-    public TreeNode getTree3() {
+    static public TreeNode getTree3() {
         TreeNode n = new TreeNode(1);
         TreeNode a = new TreeNode(2);
         n.left = a;
@@ -40,7 +55,7 @@ public class TreeTools {
         return n;
     }
 
-    public TreeNode getTree4() {
+    static public TreeNode getTree4() {
         TreeNode n = new TreeNode(1);
         TreeNode a = new TreeNode(2);
         TreeNode b = new TreeNode(2);
