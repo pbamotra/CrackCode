@@ -21,6 +21,15 @@ public class TreeTools {
         if (n.right != null) visit(n.right);
     }
 
+    static public TreeNode getSymmetricTree() {
+        TreeNode n = new TreeNode(1);
+        TreeNode a = new TreeNode(2);
+        TreeNode b = new TreeNode(2);
+        n.left = a;
+        n.right = b;
+        return n;
+    }
+
     static public TreeNode getTree1() {
         //1
         //
