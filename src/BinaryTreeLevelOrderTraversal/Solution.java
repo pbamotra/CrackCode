@@ -6,8 +6,6 @@ import Tools.TreeTools;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * User: Ran Chen <ranc@cs.cmu.edu>
@@ -48,6 +46,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        ListTools.PrintListList(new Solution().levelOrder(TreeTools.getTree1()));
+        ListTools.Print(new Solution().levelOrder(TreeTools.getTree1()));
     }
 }

@@ -42,14 +42,14 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] A = new int[]{1, 2, 3, 4, 5, 5, 5};
-        ListTools.PrintList(new Solution().searchRange(A, 5));
+        ListTools.Print(new Solution().searchRange(A, 5));
         A = new int[]{7, 7, 8, 8, 10};
-        ListTools.PrintList(new Solution().searchRange(A, 7));
+        ListTools.Print(new Solution().searchRange(A, 7));
         A = new int[]{7};
-        ListTools.PrintList(new Solution().searchRange(A, 8));
+        ListTools.Print(new Solution().searchRange(A, 8));
         A = new int[]{8};
-        ListTools.PrintList(new Solution().searchRange(A, 8));
+        ListTools.Print(new Solution().searchRange(A, 8));
         A = new int[]{2, 2};
-        ListTools.PrintList(new Solution().searchRange(A, 3));
+        ListTools.Print(new Solution().searchRange(A, 3));
     }
 }

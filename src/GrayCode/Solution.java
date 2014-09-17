@@ -25,6 +25,6 @@ public class Solution {
     }
 
     public static void main(String[] args){
-        ListTools.PrintList(new Solution().grayCode(2));
+        ListTools.PrintIntegerList(new Solution().grayCode(2));
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
  * Time: 8:56 PM
  */
 public class ListTools {
-    static public void PrintListList(List<List<Integer>> l) {
+    static public void Print(List<List<Integer>> l) {
         for (List<Integer> list : l) {
             for (Integer i : list) {
                 System.out.print(i + " ");
@@ -17,7 +17,7 @@ public class ListTools {
         }
     }
 
-    static public void PrintListList(int[][] l) {
+    static public void Print(int[][] l) {
         for (int[] list : l) {
             for (Integer i : list) {
                 System.out.print(i + " ");
@@ -26,14 +26,21 @@ public class ListTools {
         }
     }
 
-    static public void PrintList(List<Integer> l) {
+    static public void PrintIntegerList(List<Integer> l) {
         for (Integer i : l) {
             System.out.print(i + " ");
         }
         System.out.print("\r\n");
     }
 
-    static public void PrintList(int[] l) {
+    static public void PrintStringList(List<String> l) {
+        for (String i : l) {
+            System.out.print(i + " ");
+        }
+        System.out.print("\r\n");
+    }
+
+    static public void Print(int[] l) {
         for (Integer i : l) {
             System.out.print(i + " ");
         }

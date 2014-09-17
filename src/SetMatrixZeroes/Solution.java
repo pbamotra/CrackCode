@@ -45,8 +45,8 @@ public class Solution {
         int[][] m = {{0, 2, 3}, {4, 0, 6}, {7, 8, 9}};
         //int[][] m = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
         //int[][] m = {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}};
-        new ListTools().PrintListList(m);
+        new ListTools().Print(m);
         new Solution().setZeroes(m);
-        new ListTools().PrintListList(m);
+        new ListTools().Print(m);
     }
 }

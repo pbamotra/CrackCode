@@ -41,8 +41,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        ListTools.PrintListList(new Solution().permute(new int[]{1, 2, 3}));
-        ListTools.PrintListList(new Solution().permute(new int[]{1}));
+        ListTools.Print(new Solution().permute(new int[]{1, 2, 3}));
+        ListTools.Print(new Solution().permute(new int[]{1}));
 
     }
 

@@ -33,6 +33,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        new ListTools().PrintList(new Solution().getRow(2));
+        new ListTools().PrintIntegerList(new Solution().getRow(2));
     }
 }

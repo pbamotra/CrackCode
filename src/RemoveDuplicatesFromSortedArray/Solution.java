@@ -32,6 +32,6 @@ public class Solution {
     static public void main(String[] args) {
         int[] A = new int[]{1, 1, 2, 3};
         System.out.println(new Solution().removeDuplicates(A));
-        new ListTools().PrintList(A);
+        new ListTools().Print(A);
     }
 }

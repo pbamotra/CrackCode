@@ -36,6 +36,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        new ListTools().PrintListList(new Solution().generate(1));
+        new ListTools().Print(new Solution().generate(1));
     }
 }

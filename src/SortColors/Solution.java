@@ -1,6 +1,5 @@
 package SortColors;
 
-import Tools.ListNode;
 import Tools.ListTools;
 
 /**
@@ -36,6 +35,6 @@ public class Solution {
     public static void main(String[] args) {
         int[] A = new int[]{0, 0, 2, 1, 2, 0};
         new Solution().sortColors(A);
-        ListTools.PrintList(A);
+        ListTools.Print(A);
     }
 }

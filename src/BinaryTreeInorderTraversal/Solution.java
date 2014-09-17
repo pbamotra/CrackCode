@@ -27,6 +27,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        new ListTools().PrintList(new Solution().inorderTraversal(new TreeTools().getTree2()));
+        new ListTools().PrintIntegerList(new Solution().inorderTraversal(new TreeTools().getTree2()));
     }
 }

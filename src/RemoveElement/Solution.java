@@ -24,6 +24,6 @@ public class Solution {
     public static void main(String[] args) {
         int[] A = {1, 2, 1,3, 1};
         System.out.println(new Solution().removeElement(A, 1));
-        new ListTools().PrintList(A);
+        new ListTools().Print(A);
     }
 }

@@ -50,6 +50,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        ListTools.PrintListList(new Solution().levelOrderBottom(TreeTools.getTree1()));
+        ListTools.Print(new Solution().levelOrderBottom(TreeTools.getTree1()));
     }
 }
