@@ -17,6 +17,15 @@ public class ListTools {
         }
     }
 
+    static public void Print(char[][] l) {
+        for(char[] list:l){
+            for(char c:list){
+                System.out.print(c+" ");
+            }
+            System.out.print("\r\n");
+        }
+    }
+
     static public void Print(int[][] l) {
         for (int[] list : l) {
             for (Integer i : list) {
