@@ -21,6 +21,14 @@ public class TreeTools {
         if (n.right != null) visit(n.right);
     }
 
+    static public TreeNode getTreeFromString(String s) {
+        //s = {10,5,15,#,#,6,20}
+        s = s.substring(1, s.length() - 1);
+        String[] ss = s.split(",");
+
+        return null;
+    }
+
     static public TreeNode getSymmetricTree() {
         TreeNode n = new TreeNode(1);
         TreeNode a = new TreeNode(2);
@@ -57,8 +65,8 @@ public class TreeTools {
     }
 
     static public TreeNode getTree3() {
-        TreeNode n = new TreeNode(1);
-        TreeNode a = new TreeNode(2);
+        TreeNode n = new TreeNode(2);
+        TreeNode a = new TreeNode(1);
         n.left = a;
 
         return n;
@@ -72,5 +80,9 @@ public class TreeTools {
         n.left = a;
         a.left = b;
         return n;
+    }
+
+    public static void main(String[] args) {
+        TreeTools.getTreeFromString("{10,5,15,#,#,6,20}");
     }
 }

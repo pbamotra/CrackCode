@@ -10,34 +10,33 @@ import Tools.ListTools;
 public class Solution {
     public void solveSudoku(char[][] board) {
         char[][] result = new char[9][9];
-        put(board, 0, 0, 1, result);
+        put(board, 0, result);
         board = result.clone();
     }
 
-    public void put(char[][] board, int i, int j, int k, char[][] result) {
-        if (isFull(board)) {
+    public void put(char[][] board, int place, char[][] result) {
+        if (isFull(board)||place >= 81){
             result = board.clone();
             return;
         }
-        if (i > 8 || j > 8 || k > 9) return;
+        int i = place / 9;
+        int j = place - i * 9;
 
-        if (board[i][j] == '.' && goodPut(board, i, j, k)) {
-            board[i][j] = (char) (k + '0');
-            if (j < 8)
-                put(board, i, j + 1, 1, result);
-            else if (j == 8)
-                put(board, i + 1, 0, 1, result);
-        } else if (board[i][j] == '.' && !goodPut(board, i, j, k)) {
-            if (k < 9)
-                put(board, i, j, k + 1, result);
-            else if (k == 9)
-                return;
-        } else {
-            if (j < 8)
-                put(board, i, j + 1, 1, result);
-            else if (j == 8)
-                put(board, i + 1, 0, 1, result);
+
+        for (int k = 1; k < 10; k++) {
+            if (board[i][j] == '.' && goodPut(board, i, j, k)) {
+                board[i][j] = (char) (k + '0');
+                put(board, place + 1, result);
+            } else if (board[i][j] != '.') {
+                put(board, place + 1, result);
+            } else {
+
+            }
+            if (!isFull(board))
+                board[i][j] = '.';
         }
+
+
     }
 
     public boolean isFull(char[][] board) {
@@ -56,8 +55,8 @@ public class Solution {
             if (board[i][z] == (char) (k + '0')) return false;
             if (board[z][j] == (char) (k + '0')) return false;
         }
-        int row = i / 3;
-        int column = j / 3;
+        int row = (i / 3) * 3;
+        int column = (j / 3) * 3;
         for (int x = row; x < row + 3; x++) {
             for (int y = column; y < column + 3; y++) {
                 if (board[x][y] == (char) (k + '0')) return false;

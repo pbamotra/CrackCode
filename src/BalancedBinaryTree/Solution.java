@@ -12,19 +12,18 @@ import java.util.List;
  */
 public class Solution {
     public boolean isBalanced(TreeNode root) {
-        return visit(root, 0, 0);
+        if (root == null) return true;
+        if (Math.abs(visit(root.left) - visit(root.right)) > 1) return false;
+        return isBalanced(root.left) && isBalanced(root.left);
 
     }
 
-    public boolean visit(TreeNode root, int max, int n) {
-        if (root == null) return true;
-        if (n > max) max = n;
-        if ((root.left == null || root.right == null) && Math.abs(max - n) > 1) return false;
-        return visit(root.left, max, n + 1) &&
-                visit(root.right, max, n + 1);
+    public int visit(TreeNode root) {
+        if (root == null) return 0;
+        return Math.max(visit(root.left), visit(root.right)) + 1;
     }
 
     public static void main(String[] args) {
-       System.out.println(new Solution().isBalanced(new TreeTools().getTree4()));
+        System.out.println(new Solution().isBalanced(new TreeTools().getTree4()));
     }
 }
