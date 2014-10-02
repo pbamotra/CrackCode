@@ -1,7 +1,8 @@
 package Anagrams;
 
-import java.util.LinkedList;
-import java.util.List;
+import Tools.ListTools;
+
+import java.util.*;
 
 /**
  * User: Ran Chen <ranc@cs.cmu.edu>
@@ -10,40 +11,39 @@ import java.util.List;
  */
 public class Solution {
     public List<String> anagrams(String[] strs) {
-        List<String> l = new LinkedList<String>();
+        Map<String, List<String>> sortedMap = new HashMap<String, List<String>>();
+        List<String> result = new LinkedList<String>();
+
         for (String s : strs) {
-            if (isAnagram(s)) {
+            String sortedString = sort(s);
+            if (sortedMap.containsKey(sortedString)) {
+                List<String> l = sortedMap.get(sortedString);
                 l.add(s);
+            } else {
+                List<String> l = new LinkedList<String>();
+                l.add(s);
+                sortedMap.put(sortedString, l);
             }
         }
 
-        return l;
+        for (String s : sortedMap.keySet()) {
+            if (sortedMap.get(s).size() > 1)
+                result.addAll(sortedMap.get(s));
+        }
+        return result;
     }
 
-    public boolean isAnagram(String s) {
-        int length = s.length();
-        if (length == 0) return false;
-        if (length == 1) return true;
-        if (length % 2 == 0) {
-            for (int i = 0; i < length / 2; i++) {
-                if (s.charAt(i) != s.charAt(length - i - 1)) {
-                    return false;
-                }
-            }
-        } else {
-            for (int i = 0; i <= length / 2; i++) {
-                if (s.charAt(i) != s.charAt(length - i - 1)) {
-                    return false;
-                }
-            }
-        }
-        return true;
+    public String sort(String s) {
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        String result = new String(chars);
+        return result;
     }
+
 
     public static void main(String[] args) {
-        System.out.println(new Solution().isAnagram("121"));
-        System.out.println(new Solution().isAnagram("1221"));
-        System.out.println(new Solution().isAnagram("123"));
+        ListTools.PrintStringList(new Solution().anagrams(new String[]{"", ""}));
+        ListTools.PrintStringList(new Solution().anagrams(new String[]{"a", "ab", "ba"}));
 
     }
 }
