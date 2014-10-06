@@ -1,5 +1,10 @@
 package SwapNodesInPairs;
 
+import Tools.ListNode;
+import Tools.ListTools;
+import Tools.NodeTools;
+import org.w3c.dom.NodeList;
+
 /**
  * User: Ran Chen <ranc@cs.cmu.edu>
  * Date: 12/18/13
@@ -8,18 +13,22 @@ package SwapNodesInPairs;
  */
 public class Solution {
     public ListNode swapPairs(ListNode head) {
-        if (head == null) return head;
-        if (head.next == null) return head;
-        ListNode now = head;
-        head = head.next;
-        while (now != null) {
-            if (now.next == null) break;
-            ListNode p = now;
-            ListNode q = now.next;
-            p.next = q.next;
-            q.next = p;
-            now = p.next;
+        ListNode start = new ListNode(0);
+        start.next = head;
+        for (ListNode n = start; n.next != null && n.next.next != null; n = n.next.next) {
+            n.next = swap(n.next, n.next.next);
         }
-        return head;
+
+        return start.next;
+    }
+
+    public ListNode swap(ListNode a, ListNode b) {
+        a.next = b.next;
+        b.next = a;
+        return b;
+    }
+
+    public static void main(String[] args) {
+        NodeTools.PrintNodeList(new Solution().swapPairs(NodeTools.CreateNodeList("1->2->3->4")));
     }
 }
