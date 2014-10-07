@@ -8,35 +8,42 @@ import Tools.ListTools;
  * Time: 10:11 AM
  */
 public class Solution {
+    char[][] result = new char[9][9];
+
+
     public void solveSudoku(char[][] board) {
-        char[][] result = new char[9][9];
-        put(board, 0, result);
-        board = result.clone();
+        put(board, 0);
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                board[i][j] = result[i][j];
+            }
+        }
     }
 
-    public void put(char[][] board, int place, char[][] result) {
-        if (isFull(board)||place >= 81){
-            result = board.clone();
+    public void put(char[][] board, int place) {
+        //System.out.println(place);
+        if (place >= 81) {
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    result[i][j] = board[i][j];
+                }
+            }
+
             return;
         }
         int i = place / 9;
         int j = place - i * 9;
-
-
-        for (int k = 1; k < 10; k++) {
-            if (board[i][j] == '.' && goodPut(board, i, j, k)) {
-                board[i][j] = (char) (k + '0');
-                put(board, place + 1, result);
-            } else if (board[i][j] != '.') {
-                put(board, place + 1, result);
-            } else {
-
+        if (board[i][j] != '.') {
+            put(board, place + 1);
+        } else {
+            for (int k = 1; k < 10; k++) {
+                if (goodPut(board, i, j, k)) {
+                    board[i][j] = (char) (k + '0');
+                    put(board, place + 1);
+                    board[i][j] = '.';
+                }
             }
-            if (!isFull(board))
-                board[i][j] = '.';
         }
-
-
     }
 
     public boolean isFull(char[][] board) {
