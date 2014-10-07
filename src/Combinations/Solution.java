@@ -37,6 +37,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        ListTools.Print(new Solution().combine(4, 2));
+        ListTools.Print(new Solution().combine(4, 3));
     }
 }
