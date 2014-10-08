@@ -66,7 +66,7 @@ public class TreeTools {
 
     static public TreeNode getTree3() {
         TreeNode n = new TreeNode(1);
-        TreeNode a = new TreeNode(2);
+        TreeNode a = new TreeNode(1);
         n.left = a;
 
         return n;
