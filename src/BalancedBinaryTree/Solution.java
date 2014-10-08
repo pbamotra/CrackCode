@@ -11,19 +11,26 @@ import java.util.List;
  * Time: 4:16 PM
  */
 public class Solution {
+    boolean isBalanced = true;
+
     public boolean isBalanced(TreeNode root) {
         if (root == null) return true;
-        if (Math.abs(visit(root.left) - visit(root.right)) > 1) return false;
-        return isBalanced(root.left) && isBalanced(root.left);
+        visit(root);
+        return isBalanced;
 
     }
 
     public int visit(TreeNode root) {
         if (root == null) return 0;
-        return Math.max(visit(root.left), visit(root.right)) + 1;
+        int l = visit(root.left);
+        int r = visit(root.right);
+        if (Math.abs(l - r) > 1) isBalanced = false;
+        return Math.max(l, r) + 1;
     }
 
     public static void main(String[] args) {
         System.out.println(new Solution().isBalanced(new TreeTools().getTree4()));
+        System.out.println(new Solution().isBalanced(new TreeTools().getSymmetricTree()));
+
     }
 }
