@@ -1,36 +1,30 @@
-package NQueens;
-
-import Tools.ListTools;
+package NQueensII;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 /**
  * User: Ran Chen <ranc@cs.cmu.edu>
- * Date: 10/7/14
- * Time: 5:56 PM
+ * Date: 10/8/14
+ * Time: 1:44 PM
  */
 public class Solution {
+    int total = 0;
 
-    List<String[]> results = new ArrayList<String[]>();
-
-    public List<String[]> solveNQueens(int n) {
+    public int totalNQueens(int n) {
         char[][] result = new char[n][n];
         for (int i = 0; i < n; i++) {
             Arrays.fill(result[i], '.');
         }
         visit(result, 0);
 
-        return results;
+        return total;
     }
 
     public void visit(char[][] board, int count) {
         if (count == board.length) {
-//            ListTools.Print(board);
-//            System.out.println();
-            add(board);
+            total++;
             return;
         }
 
@@ -44,14 +38,6 @@ public class Solution {
 
     }
 
-    public void add(char[][] board) {
-        int n = board.length;
-        String[] result = new String[n];
-        for (int i = 0; i < n; i++) {
-            result[i] = new String(board[i]);
-        }
-        results.add(result);
-    }
 
     public boolean goodPut(int x, int y, char[][] board) {
         int n = board.length;
@@ -85,6 +71,6 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        new Solution().solveNQueens(1);
+        System.out.println(new Solution().totalNQueens(8));
     }
 }
