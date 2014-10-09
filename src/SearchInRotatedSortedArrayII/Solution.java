@@ -6,28 +6,31 @@ package SearchInRotatedSortedArrayII;
  * Time: 2:55 PM
  */
 public class Solution {
-    public int search(int[] A, int target) {
-
+    public boolean search(int[] A, int target) {
         int l = 0;
         int h = A.length - 1;
-        // find the min of the array.
-        while (l < h) {
-            int mid = (l + h) / 2;
-            if (A[mid] > A[h]) l = mid + 1;
-            else h = mid;
+        while (l <= h) {
+            int m = (l + h) / 2;
+            if (A[m] == target) return true;
+            if (A[l] < A[m]) {//l--m is sorted
+                if (A[l] <= target && target < A[m]) { // target is in l--m
+                    h = m - 1;
+                } else {
+                    l = m + 1;
+                }
+
+            } else if (A[l] > A[m]) { //m--h is sorted
+                if (A[m] < target && target <= A[h]) {//target is in m--h
+                    l = m + 1;
+                } else {
+                    h = m - 1;
+                }
+            } else {
+                l++;
+            }
         }
 
-        int lowest = l;
-        l = 0;
-        h = A.length - 1;
-        while (l <= h) {
-            int mid = (l + h) / 2;
-            int trueMid = (mid + lowest) % A.length;
-            if (A[trueMid] == target) return trueMid;
-            else if (A[trueMid] < trueMid) l = mid + 1;
-            else h = mid;
-        }
-        return -1;
+        return false;
 
     }
 
