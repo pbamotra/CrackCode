@@ -15,16 +15,23 @@ public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null) return head;
         if (head.next == null) return head;
-        // TODO deal with head.next.next
-
+        ListNode start = new ListNode(0);
+        start.next = head;
         ListNode p = head;
-        ListNode q = head.next;
-        while (true) {
-            while (q.next.val == q.val) {
-
+        ListNode pBefore = start;
+        while (p != null && p.next != null) {
+            if (p.val == p.next.val) {
+                while (p.next != null && p.val == p.next.val) {
+                    p.next = p.next.next;
+                }
+                pBefore.next = p.next;
+                p = p.next;
+            } else {
+                p = p.next;
+                pBefore = pBefore.next;
             }
         }
-
+        return start.next;
     }
 
     public static void main(String[] args) {
@@ -32,6 +39,8 @@ public class Solution {
         new NodeTools().PrintNodeList(new Solution().deleteDuplicates(new NodeTools().CreateNodeList("1->2->3->3->4->4->5")));
         new NodeTools().PrintNodeList(new Solution().deleteDuplicates(new NodeTools().CreateNodeList("1->2->5->5")));
         new NodeTools().PrintNodeList(new Solution().deleteDuplicates(new NodeTools().CreateNodeList("1->1->2->2")));
+        new NodeTools().PrintNodeList(new Solution().deleteDuplicates(new NodeTools().CreateNodeList("1->1->1")));
+
 
 
     }
