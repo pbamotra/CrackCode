@@ -17,10 +17,28 @@ public class ListTools {
         }
     }
 
+    static public void PrintStringListList(List<List<String>> l) {
+        for (List<String> list : l) {
+            for (String i : list) {
+                System.out.print(i + " ");
+            }
+            System.out.print("\r\n");
+        }
+    }
+
+    static public void Print(boolean[][] l) {
+        for (boolean[] list : l) {
+            for (boolean b : list) {
+                System.out.print((b ? 1 : 0) + " ");
+            }
+            System.out.print("\r\n");
+        }
+    }
+
     static public void Print(char[][] l) {
-        for(char[] list:l){
-            for(char c:list){
-                System.out.print(c+" ");
+        for (char[] list : l) {
+            for (char c : list) {
+                System.out.print(c + " ");
             }
             System.out.print("\r\n");
         }
