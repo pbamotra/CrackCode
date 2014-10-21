@@ -7,22 +7,28 @@ package GasStation;
  */
 public class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        int length = gas.length;
-        int start = 0;
-        int next = 1;
-        int amount = 0;
-        for (int i = 0; i < 2 * length; i++) {
-            int j = i % length;
-            next = (i + 1) % length;
-            if (amount + gas[j] - cost[j] >= 0) {
-                amount = amount + gas[j];
+        int index = 0;
+        boolean saved = false;
+        int sum = 0;
+        for (int i = 0; i < gas.length; i++) {
+            sum += gas[i] - cost[i];
+            if (gas[i] - cost[i] > 0 && !saved) {
+                index = i;
+                saved = true;
             }
-
+            if (sum < 0 && (gas[i] - cost[i] < 0)) {
+                saved = false;
+            }
         }
-        return 0;
+
+        if (sum >= 0) return index;
+        else return -1;
     }
 
     public static void main(String[] args) {
+        System.out.println(new Solution().canCompleteCircuit(new int[]{4}, new int[]{5}));  //-1
+        System.out.println(new Solution().canCompleteCircuit(new int[]{5}, new int[]{4}));      //0
+
     }
 
 
