@@ -2,9 +2,7 @@ package FourSum;
 
 import Tools.ListTools;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * User: Ran Chen <ranc@cs.cmu.edu>
@@ -12,23 +10,47 @@ import java.util.List;
  * Time: 12:05 AM
  */
 public class Solution {
+
+    Set<List<Integer>> results = new HashSet<List<Integer>>();
+
     public List<List<Integer>> fourSum(int[] num, int target) {
         Arrays.sort(num);
         int length = num.length;
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
+
+        int k = length - 1;
         for (int a = 0; a < length; a++) {
             for (int b = a + 1; b < length; b++) {
                 for (int c = b + 1; c < length; c++) {
-                    for (int d = c + 1; d < length; d++) {
-                        if (num[a] + num[b] + num[c] + num[d] == target) {
-                            results.add(new ArrayList<Integer>(Arrays.asList(num[a], num[b], num[c], num[d])));
-
+                    if (k == c && k < length - 1) k++;
+                    int sum0 = num[a] + num[b] + num[c];
+                    int sum = sum0 + num[k];
+                    if (sum == target && k > c) {
+                        results.add(Arrays.asList(num[a], num[b], num[c], num[k]));
+                        k--;
+                    } else if (sum < target) {
+                        while (sum < target && k < length - 1) {
+                            k++;
+                            sum = sum0 + num[k];
                         }
+                        if (sum == target) results.add(Arrays.asList(num[a], num[b], num[c], num[k]));
+                    } else if (sum > target) {
+                        while (sum > target && k > c + 1) {
+                            k--;
+                            sum = sum0 + num[k];
+                        }
+                        if (sum == target) results.add(Arrays.asList(num[a], num[b], num[c], num[k]));
+
                     }
                 }
             }
         }
-        return results;
+        return getResult();
+    }
+
+    public List<List<Integer>> getResult() {
+        List<List<Integer>> resultList = new ArrayList<List<Integer>>();
+        resultList.addAll(results);
+        return resultList;
     }
 
     public static void main(String[] args) {
